@@ -19,3 +19,10 @@ yarn run start
 yarn build
 ```
 で生成だけ行うこともできます。
+
+### 整形ツール
+ESLintとPrettierを導入しています。コミット時に自動実行されるほか、
+```
+yarn run Linter
+```
+でも動作させられます。
