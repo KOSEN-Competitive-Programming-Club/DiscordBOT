@@ -6,10 +6,12 @@
     "yarn": "4.0.0-rc.48"
   },
   "dependencies": {
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "scripts": {
     "start": "yarn tsc && yarn node build/botmain.js",
-    "build": "yarn tsc"
+    "build": "yarn tsc",
+    "dev": "yarn ts-node src/botmain.ts"
   }
 }
