@@ -13,7 +13,7 @@ yarn run dev
 ```
 yarn run start
 ```
-で、./buildにjavascriptファイルを生成して、それを実行してくれます。
+で、./buildにjavascriptファイルを生成して、それを実行してくれます。  
 本番環境の場合はこちらを使用してください。また、
 ```
 yarn build
