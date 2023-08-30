@@ -4,5 +4,12 @@
   "volta": {
     "node": "18.17.1",
     "yarn": "4.0.0-rc.48"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "start": "yarn tsc && yarn node build/botmain.js",
+    "build": "yarn tsc"
   }
 }
