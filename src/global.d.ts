@@ -1,9 +1,4 @@
+import { Client } from "discord.js";
 declare global {
-  namespace NodeJS {
-    interface Global {
-      client: import("discord.js").Client;
-    }
-  }
+  var client: Client;
 }
-
-export {};
