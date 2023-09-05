@@ -15,3 +15,5 @@
 # IntellJ IDEA系の実行構成
 /.idea/*
 !/.idea/runConfigurations
+
+./config/config.json

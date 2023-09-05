@@ -1,0 +1,7 @@
+{
+  "token": "YOUR BOT TOKEN",
+  "client": "YOUR BOT ID",
+  "DB": "YOUR DB URI",
+  "logSystem": "LOG CHANNEL",
+  "erroeSystem": "ERROR CHANNEL"
+}

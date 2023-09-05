@@ -1,22 +1,24 @@
 {
-  "name": "DiscordBOT",
+  "name": "discorbot",
   "packageManager": "yarn@4.0.0-rc.48",
+  "version": "0.0.0",
   "volta": {
     "node": "18.17.1",
     "yarn": "4.0.0-rc.48"
   },
   "dependencies": {
+    "@discordjs/rest": "^2.0.1",
+    "discord.js": "^14.13.0",
+    "enquirer": "^2.4.1",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "mongodb": "^6.0.0",
+    "node-cron": "^3.0.2"
   },
   "scripts": {
-    "start": "yarn tsc && yarn node build/botmain.js",
-    "build": "yarn tsc",
-    "dev": "yarn ts-node src/botmain.ts",
+    "start": "node ./src/botmain.js",
     "Linter": "yarn eslint --fix && yarn prettier src --write ",
-    "postinstall": "husky install"
+    "deploy": "node deploy-commands.js"
   },
   "devDependencies": {
     "@types/eslint": "^8",

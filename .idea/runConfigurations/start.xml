@@ -5,7 +5,7 @@
     <scripts>
       <script value="start" />
     </scripts>
-    <node-interpreter value="$VOLTA_HOME$/bin/node" />
+    <node-interpreter value="$USER_HOME$/.volta/bin/node" />
     <envs />
     <method v="2" />
   </configuration>
