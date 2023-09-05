@@ -4,14 +4,14 @@ const system = require("../functions/logsystem.js");
 const packageJSON = require("../../package.json");
 const axios = require("axios");
 const rankColor = [
-  { name: "灰", code: 0x808080 },
-  { name: "茶", code: 0x804000 },
-  { name: "緑", code: 0x008000 },
-  { name: "水", code: 0x00c0c0 },
-  { name: "青", code: 0x0000ff },
-  { name: "黄", code: 0xc0c000 },
-  { name: "橙", code: 0xff8000 },
-  { name: "赤", code: 0xff0000 },
+  { name: "灰色", code: 0x808080 },
+  { name: "茶色", code: 0x804000 },
+  { name: "緑色", code: 0x008000 },
+  { name: "水色", code: 0x00c0c0 },
+  { name: "青色", code: 0x0000ff },
+  { name: "黄色", code: 0xc0c000 },
+  { name: "橙色", code: 0xff8000 },
+  { name: "赤色", code: 0xff0000 },
 ];
 
 module.exports = [
@@ -30,9 +30,9 @@ module.exports = [
       await db.updateOrInsert(
         "main",
         "user",
-        { userId: interaction.id },
+        { userId: interaction.user.id },
         {
-          userId: interaction.id,
+          userId: interaction.user.id,
           collegeId: null,
           atcoderId: interaction.options.getString("atcoderアカウント"),
           certification: false,
@@ -74,9 +74,9 @@ module.exports = [
       await interaction.deferReply();
       let atcoderId,
         userData = null;
-      if (interaction.options.getUser("Discordアカウント")) {
+      if (interaction.options.getUser("discordアカウント")) {
         const user = await db.find("main", "user", {
-          userId: interaction.options.getUser("Discordアカウント").id,
+          userId: interaction.options.getUser("discordアカウント").id,
         });
         if (user.length === 0) {
           await interaction.editReply(
@@ -95,7 +95,9 @@ module.exports = [
       } else if (interaction.options.getString("atcoderアカウント")) {
         atcoderId = interaction.options.getString("atcoderアカウント");
       } else {
-        const user = await db.find("main", "user", { userId: interaction.id });
+        const user = await db.find("main", "user", {
+          userId: interaction.user.id,
+        });
         if (user.length === 0) {
           await interaction.editReply(
             "Discordアカウントと紐付けられているAtCoderアカウントが見つかりませんでした。\n/link-atcoderコマンドを使用して登録してください。",
@@ -128,17 +130,32 @@ async function generationAtcoderProfile(atcoderId, userData = null) {
 
   const field = [];
   if (userData) {
-    field.push(
-      {
-        name: "Algorithmレート",
-        value: userData.algoRate,
-      },
-      {
-        name: "Heuristicレート",
-        value: userData.HeuristicRate,
-      },
-    );
-  } else {
+    if (userData.algoRate || userData.HeuristicRate) {
+      field.push(
+        {
+          name: "Algorithmランク",
+          value:
+            rankColor[Math.min(Math.floor(userData.algoRate / 400), 7)].name ??
+            "---",
+        },
+        {
+          name: "Algorithmレート",
+          value: userData.algoRate ?? "---",
+        },
+        {
+          name: "Heuristicランク",
+          value:
+            rankColor[Math.min(Math.floor(userData.HeuristicRate / 400), 7)]
+              .name ?? "---",
+        },
+        {
+          name: "Heuristicレート",
+          value: userData.HeuristicRate ?? "---",
+        },
+      );
+    }
+  }
+  {
     const response = [null, null];
     try {
       response[0] = (
@@ -174,7 +191,12 @@ async function generationAtcoderProfile(atcoderId, userData = null) {
             name: i === 0 ? "Algorithmランク" : "Heuristicランク",
             value:
               rankColor[
-                Math.floor(response[i][response[i].length - 1].NewRating / 400)
+                Math.min(
+                  Math.floor(
+                    response[i][response[i].length - 1].NewRating / 400,
+                  ),
+                  7,
+                )
               ].name,
           },
           {
@@ -201,7 +223,7 @@ async function generationAtcoderProfile(atcoderId, userData = null) {
       .setFooter({ text: "Developed by 高専競プロ部Admin" });
   } else {
     return new EmbedBuilder()
-      .setColor(rankColor[Math.floor(field[1].value / 400)].code)
+      .setColor(rankColor[Math.min(Math.floor(field[1].value / 400), 7)].code)
       .setTitle(`${atcoderId}さんのAtCoderプロフィール`)
       .setAuthor({
         name: "高専競プロ部-管理BOT",
