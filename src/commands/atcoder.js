@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, version } = require("discord.js");
 const db = require("../functions/db.js");
 const system = require("../functions/logsystem.js");
-const packageJSON = require("../../package.json");
 const axios = require("axios");
 const rankColor = [
   { name: "灰色", code: 0x808080 },
