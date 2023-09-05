@@ -3,5 +3,5 @@
   "client": "YOUR BOT ID",
   "db": "YOUR DB URI",
   "logSystem": "LOG CHANNEL",
-  "erroeSystem": "ERROR CHANNEL"
+  "errorSystem": "ERROR CHANNEL"
 }
