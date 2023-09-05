@@ -1,5 +1,5 @@
 {
-  "name": "DiscordBOT",
+  "name": "discorbot",
   "packageManager": "yarn@4.0.0-rc.48",
   "volta": {
     "node": "18.17.1",
@@ -9,16 +9,11 @@
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.48.0",
-    "eslint-config-prettier": "^9.0.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "eslint-config-prettier": "^9.0.0"
   },
   "scripts": {
-    "start": "yarn tsc && yarn node build/botmain.js",
-    "build": "yarn tsc",
-    "dev": "yarn ts-node src/botmain.ts",
-    "Linter": "yarn eslint --fix && yarn prettier src --write ",
-    "postinstall": "husky install"
+    "start": "node ./src/botmain.js",
+    "Linter": "yarn eslint --fix && yarn prettier src --write "
   },
   "devDependencies": {
     "@types/eslint": "^8",
