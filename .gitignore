@@ -16,4 +16,4 @@
 /.idea/*
 !/.idea/runConfigurations
 
-.env
+./config/config.json
