@@ -36,7 +36,7 @@ module.exports = [
           atcoderId: interaction.options.getString("atcoderアカウント"),
           certification: false,
           algoRate: null,
-          HeuristicRate: null,
+          heuristicRate: null,
         },
       );
 
@@ -129,7 +129,7 @@ async function generationAtcoderProfile(atcoderId, userData = null) {
 
   const field = [];
   if (userData) {
-    if (userData.algoRate || userData.HeuristicRate) {
+    if (userData.algoRate || userData.heuristicRate) {
       field.push(
         {
           name: "Algorithmランク",
@@ -144,12 +144,12 @@ async function generationAtcoderProfile(atcoderId, userData = null) {
         {
           name: "Heuristicランク",
           value:
-            rankColor[Math.min(Math.floor(userData.HeuristicRate / 400), 7)]
+            rankColor[Math.min(Math.floor(userData.heuristicRate / 400), 7)]
               .name ?? "---",
         },
         {
           name: "Heuristicレート",
-          value: userData.HeuristicRate ?? "---",
+          value: userData.heuristicRate ?? "---",
         },
       );
     }
