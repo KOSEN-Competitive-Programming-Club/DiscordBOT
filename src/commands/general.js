@@ -67,12 +67,18 @@ module.exports = [
   },
   {
     data: new SlashCommandBuilder()
-      .setName("kosen-set1")
+      .setName("kosen-set")
       .setDescription("自分の所属高専を設定します。")
       .addIntegerOption((option) =>
         option
-          .setName("高専1")
-          .setDescription("高専を指定します")
+          .setName("入学年の下二桁")
+          .setDescription("kosen〇〇s")
+          .setRequired(true),
+      )
+      .addIntegerOption((option) =>
+        option
+          .setName("北海道-東北")
+          .setDescription("北海道・東北地区の高専を指定します")
           .setRequired(false)
           .addChoices(
             { name: "函館工業高等専門学校", value: 1 },
@@ -85,6 +91,14 @@ module.exports = [
             { name: "秋田工業高等専門学校", value: 8 },
             { name: "鶴岡工業高等専門学校", value: 9 },
             { name: "福島工業高等専門学校", value: 10 },
+          ),
+      )
+      .addIntegerOption((option) =>
+        option
+          .setName("関東甲信越")
+          .setDescription("関東甲信越地区の高専を指定します")
+          .setRequired(false)
+          .addChoices(
             { name: "茨城工業高等専門学校", value: 11 },
             { name: "小山工業高等専門学校", value: 12 },
             { name: "群馬工業高等専門学校", value: 13 },
@@ -94,22 +108,20 @@ module.exports = [
             { name: "長野工業高等専門学校", value: 17 },
             { name: "東京都立産業技術高等専門学校", value: 18 },
             { name: "サレジオ工業高等専門学校", value: 19 },
+          ),
+      )
+      .addIntegerOption((option) =>
+        option
+          .setName("東海-北陸-近畿")
+          .setDescription("東海-北陸-近畿地区の高専を指定します")
+          .setRequired(false)
+          .addChoices(
             { name: "富山高等専門学校", value: 20 },
             { name: "石川工業高等専門学校", value: 21 },
             { name: "福井工業高等専門学校", value: 22 },
             { name: "岐阜工業高等専門学校", value: 23 },
             { name: "沼津工業高等専門学校", value: 24 },
             { name: "豊田工業高等専門学校", value: 25 },
-          ),
-      )
-      .setName("kosen-set2")
-      .setDescription("自分の所属高専を設定します。")
-      .addIntegerOption((option) =>
-        option
-          .setName("高専2")
-          .setDescription("高専を指定します")
-          .setRequired(true)
-          .addChoices(
             { name: "鈴鹿工業高等専門学校", value: 26 },
             { name: "舞鶴工業高等専門学校", value: 27 },
             { name: "明石工業高等専門学校", value: 28 },
@@ -120,6 +132,14 @@ module.exports = [
             { name: "神戸市立工業高等専門学校", value: 33 },
             { name: "国際高等専門学校", value: 34 },
             { name: "近畿大学工業高等専門学校", value: 35 },
+          ),
+      )
+      .addIntegerOption((option) =>
+        option
+          .setName("中国-四国")
+          .setDescription("中国・四国地区の高専を指定します")
+          .setRequired(false)
+          .addChoices(
             { name: "米子工業高等専門学校", value: 36 },
             { name: "松江工業高等専門学校", value: 37 },
             { name: "津山工業高等専門学校", value: 38 },
@@ -134,17 +154,15 @@ module.exports = [
             { name: "大島商船高等専門学校", value: 47 },
             { name: "弓削商船高等専門学校", value: 48 },
             { name: "神山まるごと高等専門学校", value: 49 },
-            { name: "久留米工業高等専門学校", value: 50 },
           ),
       )
-      .setName("kosen-set3")
-      .setDescription("自分の所属高専を設定します。")
       .addIntegerOption((option) =>
         option
-          .setName("高専3")
-          .setDescription("高専を指定します")
+          .setName("九州")
+          .setDescription("九州地区の高専を指定します")
           .setRequired(false)
           .addChoices(
+            { name: "久留米工業高等専門学校", value: 50 },
             { name: "有明工業高等専門学校", value: 51 },
             { name: "北九州工業高等専門学校", value: 52 },
             { name: "佐世保工業高等専門学校", value: 53 },
