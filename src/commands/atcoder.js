@@ -37,7 +37,7 @@ module.exports = [
           certification: false,
           algoRate: null,
           heuristicRate: null,
-        },
+        }, //ここミスってる
       );
 
       await interaction.editReply(

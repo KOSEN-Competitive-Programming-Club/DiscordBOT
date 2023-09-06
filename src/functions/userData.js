@@ -3,7 +3,17 @@ const db = require("../functions/db.js");
 const system = require("../functions/logsystem.js");
 const axios = require("axios");
 
-exports.inserOrWriteUser = async function func(userFilter, update) {};
+exports.inserOrWriteUser = async function func(userId, update) {
+  const user = await db.find("main", "user", { userId: userId });
+  const contents = {
+    userId: userId,
+    collegeId: update.collegeId ?? null,
+    atcoderId: update.atcoderId ?? null,
+    certification: update.certification ?? null,
+    algoRate: update.algoRate ?? null,
+    heuristicRate: update.heuristicRate ?? null,
+  };
+};
 
 /**
  *
