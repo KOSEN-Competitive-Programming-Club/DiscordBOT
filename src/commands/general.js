@@ -2,25 +2,25 @@ const { SlashCommandBuilder, EmbedBuilder, version } = require("discord.js");
 const system = require("../functions/logsystem.js");
 const packageJSON = require("../../package.json");
 const db = require("../functions/db.js");
+const help = require("../functions/help.js");
 const { kosen } = require("../lib.js");
 
 module.exports = [
-  /*
-        {
-            data: new SlashCommandBuilder()
-                .setName('help')
-                .setDescription('このBOTのヘルプを表示します'),
-            async execute(interaction) {
-                await help.helpSend(interaction);
-            },
-        },*/
+  {
+    data: new SlashCommandBuilder()
+      .setName("help")
+      .setDescription("このBOTのヘルプを表示します"),
+    async execute(interaction) {
+      await help.helpSend(interaction);
+    },
+  },
   {
     data: new SlashCommandBuilder()
       .setName("about")
       .setDescription("このBOTの概要を表示します"),
     async execute(interaction) {
       const embed = new EmbedBuilder()
-        .setColor(0x00a0ea)
+        .setColor(0x0875c1)
         .setTitle("高専競プロ部-管理BOT概要")
         .setAuthor({
           name: "高専競プロ部-管理BOT",

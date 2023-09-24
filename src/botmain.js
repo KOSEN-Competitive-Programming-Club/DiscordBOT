@@ -1,5 +1,3 @@
-// noinspection NodeCoreCodingAssistance
-
 const {
   Client,
   GatewayIntentBits,
@@ -31,6 +29,7 @@ const config = require("../config/config.json");
 //関数読み込み
 const db = require("./functions/db.js");
 const system = require("./functions/logsystem.js");
+const help = require("./functions/help.js");
 
 //スラッシュコマンド登録
 const commandsPath = path.join(__dirname, "commands");

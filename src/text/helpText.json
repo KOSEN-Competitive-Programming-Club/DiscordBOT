@@ -1,0 +1,56 @@
+{
+  "help": [
+    {
+      "shortDescription": "AtCoderアカウント連携の説明です",
+      "value": {
+        "title": "AtCoderアカウント連携",
+        "description": "AtCoderアカウント連携についての説明です。\n> この機能では、AtCoderアカウントと連携をすることで、AtCoderのデータを見ることができるようになります。\n",
+        "field": [
+          {
+            "name": "/link-atcoder",
+            "value": "> AtCoderアカウントと自分のDiscordアカウントを紐付けます。\n> 間違えた場合は、再度実行することで修正できます。\n"
+          },
+          {
+            "name": "/atcoder-profile ",
+            "value": "> AtCoderのレートを確認することができます。\n> AtCoderのアカウント名から直接見ることも、Discordアカウントを指定してそのアカウントと紐付けられたデータを見ることもできます。\n"
+          }
+        ]
+      }
+    },
+    {
+      "shortDescription": "学校・学年ロール付与の説明です",
+      "value": {
+        "title": "学校・学年ロール付与",
+        "description": "対応する学年と学校のロールを付与することができます。\n",
+        "field": [
+          {
+            "name": "/kosen-set",
+            "value": "> 入学年の下二桁(kosen〇〇sの〇〇の部分)を指定することで、学年を登録できます。\n> また、対応する地域の選択肢から学校を選ぶことで、学校ロールも付与できます。\n"
+          }
+        ]
+      }
+    },
+
+    {
+      "shortDescription": "BOTの運営とサポートについてです。",
+      "value": {
+        "title": "BOTの運営とサポート",
+        "description": "BOTの運営とサポートは、下記のとおりです。\n",
+        "field": [
+          {
+            "name": "ソースコード",
+            "value": "> このBOTは、オープンソースとなっています。[GitHub](https://github.com/KOSEN-Competitive-Programming-Club/DiscordBOT)にて公開されています。\n"
+          },
+          {
+            "name": "サポート",
+            "value": "> 不明点等ありましたら、<#1144955489873043466>にて対応します。\n"
+          },
+          {
+            "name": "バグの報告先",
+            "value": "> [Issue](https://github.com/KOSEN-Competitive-Programming-Club/DiscordBOT/issues)に書いてもらうか、サポートへ連絡をお願いします。\n"
+          }
+        ]
+      }
+    }
+  ]
+}
