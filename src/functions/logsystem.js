@@ -15,7 +15,7 @@ exports.log = async function func(message, title) {
       .join("")}\n--------${date}\n`,
   );
   const embed = new EmbedBuilder()
-    .setColor(0x00a0ea)
+    .setColor(0x0875c1)
     .setTitle(title ?? "システムログ")
     .setDescription(message)
     .setTimestamp()
