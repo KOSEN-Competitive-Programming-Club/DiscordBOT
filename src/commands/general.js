@@ -1,6 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder, version } = require("discord.js");
 const system = require("../functions/logsystem.js");
 const packageJSON = require("../../package.json");
+const db = require("../functions/db.js");
+const { kosen } = require("../lib.js");
 
 module.exports = [
   /*
@@ -174,7 +176,80 @@ module.exports = [
           ),
       ),
     async execute(interaction) {
-      await interaction.reply(`Ping : ${interaction.client.ws.ping}ms`);
+      await interaction.deferReply({ ephemeral: true });
+      let replyTxt = `kosen${interaction.options.getInteger(
+        "入学年の下二桁",
+      )}sロール`;
+      const guild =
+        client.guilds.cache.get(interaction.guild.id) ??
+        (await client.guilds.fetch(interaction.guild.id));
+      const gradeRole = await db.find("main", "role", {
+        type: "grade",
+        value: interaction.options.getInteger("入学年の下二桁"),
+      });
+      const allGradeRole = await db.find("main", "role", {
+        type: "grade",
+      });
+
+      for (let i = 0; i < allGradeRole.length; i++) {
+        //今ついてるロールを削除
+        try {
+          await guild.members.removeRole({
+            user: interaction.user.id,
+            role: allGradeRole[i].id,
+          });
+        } catch {}
+      }
+      if (gradeRole.length > 0) {
+        try {
+          await guild.members.addRole({
+            user: interaction.user.id,
+            role: gradeRole[0].id,
+          });
+          replyTxt += "を付与しました\n";
+        } catch {
+          await db.delete("main", "role", {
+            type: "grade",
+            value: interaction.options.getInteger("入学年の下二桁"),
+          });
+          gradeRole.length = 0;
+        }
+      }
+      if (gradeRole.length === 0) {
+        try {
+          const newRole = await guild.roles.create({
+            name: `kosen${interaction.options.getInteger("入学年の下二桁")}s`,
+            reason: "高専競プロ部-管理BOTにより作成",
+          });
+          await db.insert("main", "role", {
+            type: "grade",
+            value: interaction.options.getInteger("入学年の下二桁"),
+            id: newRole.id,
+          });
+          await system.log(
+            `学年ロール(kosen${interaction.options.getInteger(
+              "入学年の下二桁",
+            )}s)を作成しました`,
+          );
+          await guild.members.addRole({
+            user: interaction.user.id,
+            role: newRole.id,
+          });
+          replyTxt += "を付与しました\n";
+        } catch {
+          replyTxt += "の付与に失敗しました\n";
+        }
+      }
+
+      const school =
+        interaction.options.getInteger("北海道-東北") ??
+        interaction.options.getInteger("関東甲信越") ??
+        interaction.options.getInteger("東海-北陸-近畿") ??
+        interaction.options.getInteger("中国-四国") ??
+        interaction.options.getInteger("九州") ??
+        null;
+
+      await interaction.editReply(replyTxt);
     },
   },
 ];
