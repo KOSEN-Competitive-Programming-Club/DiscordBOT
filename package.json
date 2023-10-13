@@ -1,0 +1,38 @@
+{
+  "name": "discorbot",
+  "packageManager": "yarn@4.0.0-rc.48",
+  "version": "0.0.0",
+  "volta": {
+    "node": "18.17.1",
+    "yarn": "4.0.0-rc.48"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^2.0.1",
+    "axios": "^1.5.0",
+    "discord.js": "^14.13.0",
+    "enquirer": "^2.4.1",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "mongodb": "^6.0.0",
+    "node-cron": "^3.0.2"
+  },
+  "scripts": {
+    "start": "node ./src/botmain.js",
+    "Linter": "yarn eslint --fix && yarn prettier src --write ",
+    "deploy": "node deploy-commands.js"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8",
+    "@types/prettier": "^3",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn Linter"
+    ]
+  }
+}
