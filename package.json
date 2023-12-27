@@ -1,7 +1,7 @@
 {
   "name": "discorbot",
   "packageManager": "yarn@4.0.0-rc.48",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "volta": {
     "node": "18.17.1",
     "yarn": "4.0.0-rc.48"
