@@ -51,7 +51,7 @@ module.exports = [
               process.versions.node +
               `\n discord.js v` +
               version +
-              oldAlog`\n MongoDB 6.0 Powered by Google Cloud`,
+              `\n MongoDB 6.0 Powered by Google Cloud`,
           },
         ])
         .setTimestamp()
